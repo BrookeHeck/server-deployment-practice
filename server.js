@@ -9,7 +9,11 @@ module.exports = app;
 const PORT = process.env.PORT || 3002;
 
 app.get('/', (request, response) => {
-  response.status(200).send('Development Practice Server');
+  try {
+    response.status(200).send('Development Practice Server');
+  } catch(e) {
+    console.log(e);
+  }
 });
 
 app.get('/add/:num1/:num2', (request, response) => {
@@ -30,7 +34,11 @@ app.get('/hello', (request, response) => {
 });
 
 app.get('*', (request, response) => {
-  response.status(404).send('No route');
+  try {
+    response.status(404).send('No route');
+  } catch(e) {
+    console.log(e);
+  }
 });
 
 app.use((error, request, response, next) => {
